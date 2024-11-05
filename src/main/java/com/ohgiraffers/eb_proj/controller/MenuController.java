@@ -21,7 +21,7 @@ public class MenuController {
     public String healthCheck(){
         return "eb_proj is fine!";
     }
-    @GetMapping("menus/{menuCode)")
+    @GetMapping("menus/{menuCode}")
     public MenuDTO findMenuByMenuCode(@PathVariable("menuCode")int menuCode){
         MenuDTO returnMenu = menuService.findMenuByMenuCode(menuCode);
         return returnMenu;
