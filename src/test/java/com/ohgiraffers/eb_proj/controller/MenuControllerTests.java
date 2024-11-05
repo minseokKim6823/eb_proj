@@ -1,19 +1,21 @@
-package com.ohgiraffers.eb_proj;
+package com.ohgiraffers.eb_proj.controller;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class EbProjApplicationTests {
+class MenuControllerTests {
 
     @Autowired
     private MockMvc mockMvc;
@@ -26,5 +28,14 @@ class EbProjApplicationTests {
                 .andDo(print());
     }
 
+    @DisplayName("2번 메뉴 있는지 확인")
+    @Test
+    public void findByMenuCodeTest() throws Exception{
+        mockMvc.perform(get("/menus/2"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.menuName").value("우럭스무디"))
+                .andDo(print());
+    }
 
 }
