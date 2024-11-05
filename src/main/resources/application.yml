@@ -1,17 +1,5 @@
-server:
-  port:
-    5000
-
+# application.yml은 공통설정으로 사용하고
+# 프로필별 설정이 이를 오버라이드 한다.
 spring:
-  datatsourt:
-    driver-class-name: org.mariadb.jdbc.Driver
-    url:
-
-
-  jpa:
-    generate-ddl: false
-    show-sql: true
-    database: mysql
-    properties:
-      hibernate:
-        format_sql : true
+  profiles:
+    active: test
