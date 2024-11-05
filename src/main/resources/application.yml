@@ -1,0 +1,17 @@
+server:
+  port:
+    5000
+
+spring:
+  datatsourt:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url:
+
+
+  jpa:
+    generate-ddl: false
+    show-sql: true
+    database: mysql
+    properties:
+      hibernate:
+        format_sql : true
